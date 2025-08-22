@@ -1,0 +1,81 @@
+networks:
+  my_network:
+    driver: bridge
+services:
+  db:
+    environment:
+      POSTGRES_DB: openai_assistants_db_2
+      POSTGRES_PASSWORD: cu3ndh3behc
+      POSTGRES_USER: openai_assistants_db_2
+    healthcheck:
+      interval: 5s
+      retries: 5
+      test:
+      - CMD-SHELL
+      - pg_isready -U openai_assistants_db_2 -d openai_assistants_db_2
+      timeout: 5s
+    image: postgres:15
+    networks:
+    - my_network
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+    - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  open_ai:
+    build: Assist
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      HTTP_PROXY: http://user304567:1ufzcv@181.215.231.14:7224
+      NO_PROXY: localhost,open_ai,172.*,db
+    networks:
+    - my_network
+    ports:
+    - 5000:5000
+    restart: unless-stopped
+  ya_bot_40:
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+    - open_ai
+    environment:
+      API_ENDPOINT: http://open_ai:5000/chat
+      ASSISTANT_ID: '5'
+      CREDS: 7101634669:AAG65LXypHHcjjnJbKIMoVWZco_NocZs954
+      PLATFORM: telegram_bot
+    networks:
+    - my_network
+    restart: unless-stopped
+  ya_bot_42:
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+    - open_ai
+    environment:
+      API_ENDPOINT: http://open_ai:5000/chat
+      ASSISTANT_ID: '6'
+      CREDS: 7671126733:AAHFJkrKTUcYl5nS9LFmg8K7cq_UVxK7a5c
+      PLATFORM: telegram_bot
+    networks:
+    - my_network
+    restart: unless-stopped
+  ya_bot_43:
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+    - open_ai
+    environment:
+      API_ENDPOINT: http://open_ai:5000/chat
+      ASSISTANT_ID: '6'
+      CREDS: 7671126733:AAHFJkrKTUcYl5nS9LFmg8K7cq_UVxK7a5c
+      PLATFORM: telegram_bot
+    networks:
+    - my_network
+    restart: unless-stopped
+version: '3.8'
+volumes:
+  postgres_data:
+    name: postgres_15_data_2

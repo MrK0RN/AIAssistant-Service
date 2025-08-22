@@ -1,0 +1,10 @@
+
+  bot_bot_24061203:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: bot_bot_24061203
+    command: python /msnger/bots/bot_24061203/bot.py
+    volumes:
+      - ./bots/bot_24061203:/msnger/bots/bot_24061203
+    restart: unless-stopped

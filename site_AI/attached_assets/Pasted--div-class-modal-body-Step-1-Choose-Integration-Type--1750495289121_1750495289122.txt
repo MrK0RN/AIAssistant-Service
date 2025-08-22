@@ -1,0 +1,172 @@
+<div class="modal-body">
+                    <!-- Step 1: Choose Integration Type -->
+                    <div id="step1-integration" class="assistant-step">
+                        <h6 class="mb-3">Выберите тип интеграции:</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="integration-option" data-type="telegram_bot">
+                                    <div class="card h-100 border-2 integration-card-option">
+                                        <div class="card-body text-center">
+                                            <i class="fab fa-telegram fa-2x text-primary mb-3"></i>
+                                            <h6>Telegram Bot</h6>
+                                            <p class="text-muted small">Бот с токеном</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="integration-option" data-type="telegram_client">
+                                    <div class="card h-100 border-2 integration-card-option">
+                                        <div class="card-body text-center">
+                                            <i class="fab fa-telegram fa-2x text-info mb-3"></i>
+                                            <h6>Telegram Client</h6>
+                                            <p class="text-muted small">Пользовательский аккаунт</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="integration-option" data-type="whatsapp">
+                                    <div class="card h-100 border-2 integration-card-option">
+                                        <div class="card-body text-center">
+                                            <i class="fab fa-whatsapp fa-2x text-success mb-3"></i>
+                                            <h6>WhatsApp</h6>
+                                            <p class="text-muted small">API интеграция</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="integration-option" data-type="instagram">
+                                    <div class="card h-100 border-2 integration-card-option">
+                                        <div class="card-body text-center">
+                                            <i class="fab fa-instagram fa-2x text-danger mb-3"></i>
+                                            <h6>Instagram</h6>
+                                            <p class="text-muted small">API интеграция</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Integration Settings -->
+                    <div id="step2-settings" class="assistant-step d-none">
+                        <h6 class="mb-3">Настройки интеграции:</h6>
+
+                        <!-- Telegram Bot Settings -->
+                        <div id="telegram-bot-settings" class="integration-settings d-none">
+                            <div class="mb-3">
+                                <label for="botToken" class="form-label">Bot Token *</label>
+                                <input name="TGbotToken" type="password" class="form-control" id="botToken" 
+                                       placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
+                                <div class="form-text">Получите токен у @BotFather в Telegram</div>
+                            </div>
+                        </div>
+
+                        <!-- Telegram Client Settings -->
+                        <div id="telegram-client-settings" class="integration-settings d-none">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="apiId" class="form-label">API ID *</label>
+                                        <input name="TGapiId" type="text" class="form-control" id="apiId" 
+                                               placeholder="1234567">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phoneNumber" class="form-label">Номер телефона *</label>
+                                        <input name="TGphoneNumber" type="tel" class="form-control" id="phoneNumber" placeholder="+7XXXXXXXXXX">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="apiHash" class="form-label">API Hash *</label>
+                                <input name="TGapiHash" type="password" class="form-control" id="apiHash" 
+                                       placeholder="a1b2c3d4e5f6g7h8i9j0">
+                                <div class="form-text">Получите на <a href="https://my.telegram.org" target="_blank">my.telegram.org</a></div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Settings -->
+                        <div id="whatsapp-settings" class="integration-settings d-none">
+                            <div class="mb-3">
+                                <label for="whatsappApiKey" class="form-label">WhatsApp API Key *</label>
+                                <input name="whatsappApiKey" type="password" class="form-control" id="whatsappApiKey" 
+                                       placeholder="Введите API ключ WhatsApp">
+                                <div class="form-text">API ключ от WhatsApp Business</div>
+                            </div>
+                        </div>
+
+                        <!-- Instagram Settings -->
+                        <div id="instagram-settings" class="integration-settings d-none">
+                            <div class="mb-3">
+                                <label for="instagramApiKey" class="form-label">Instagram API Key *</label>
+                                <input name="instagramApiKey" type="password" class="form-control" id="instagramApiKey" 
+                                       placeholder="Введите API ключ Instagram">
+                                <div class="form-text">API ключ от Instagram Basic Display</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Assistant Configuration -->
+                    <div id="step3-assistant" class="assistant-step d-none">
+                        <h6 class="mb-3">Настройки ассистента:</h6>
+                        <!--<form id="addAssistantForm">-->
+                            <div class="mb-3">
+                                <label for="assistantName" class="form-label">Имя ассистента *</label>
+                                <input name="assistantName" type="text" class="form-control" id="assistantName" required
+                                       placeholder="Например: Поддержка клиентов">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="assistantTone" class="form-label">Тональность *</label>
+                                    <select name="assistantTone" class="form-select" id="assistantTone" required>
+                                        <option value="">Выберите тональность</option>
+                                        <option value="friendly">Дружелюбный</option>
+                                        <option value="formal">Формальный</option>
+                                        <option value="expert">Экспертный</option>
+                                        <option value="professional">Профессиональный</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="assistantLanguage" class="form-label">Язык *</label>
+                                    <select name="assistantLanguage" class="form-select" id="assistantLanguage" required>
+                                        <option value="">Выберите язык</option>
+                                        <option value="ru">Русский</option>
+                                        <option value="en">Английский</option>
+                                        <option value="es">Испанский</option>
+                                        <option value="de">Немецкий</option>
+                                        <option value="fr">Французский</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="assistantPrompt" class="form-label">Мастер-промт *</label>
+                                <textarea name="assistantPrompt" class="form-control" id="assistantPrompt" rows="5" required
+                                          placeholder="Опишите роль и поведение ассистента..."></textarea>
+                                <div class="form-text">
+                                    <small>Пресеты: 
+                                        <button type="button" class="btn btn-link btn-sm p-0" onclick="setPromptPreset('support')">Поддержка</button>,
+                                        <button type="button" class="btn btn-link btn-sm p-0" onclick="setPromptPreset('sales')">Продажи</button>,
+                                        <button type="button" class="btn btn-link btn-sm p-0" onclick="setPromptPreset('consultant')">Консультант</button>
+                                    </small>
+                                </div>
+                            </div>
+                    <!--</form>-->
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-outline-secondary d-none" id="prevStepBtn" onclick="prevAssistantStep()">
+                        <i class="fas fa-arrow-left me-2"></i>Назад
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextStepBtn" onclick="nextAssistantStep()">
+                        Далее <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                    <button type="submit" class="btn btn-success d-none" id="createAssistantBtn" onclick="saveAssistant()">
+                        <i class="fas fa-plus me-2"></i>Создать ассистента
+                    </button>
+                </div>

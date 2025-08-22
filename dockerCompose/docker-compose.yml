@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ya_bot_001:
+    build: .
+    environment:
+      PLATFORM: telegram_bot
+      CREDS: "7405729393:AAEHAnf731mi2aLrCZWiOyJNyoWcQeMB4uU"
+      API_ENDPOINT: "http://host.docker.internal:5000/chat"
+      ASSISTANT_ID: 1
+    restart: unless-stopped
